@@ -1,0 +1,49 @@
+{% extends "todo_app/base.html" %} {% block title %}Landing-page{% endblock %}
+<!--  -->
+{% block content %}
+
+<nav class="shadow px-4 py-4">
+  <div class="flex items-center justify-between">
+    <div class="text-2xl font-extrabold text-teal-700" id="logo">
+      <em>DJTodo</em>
+    </div>
+    <div class="flex justify-between items-center md:space-x-12">
+      {% if user.is_authenticated %}
+      <a
+        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+        href="{% url 'logout' %}"
+        >Logout</a
+      >
+      <a
+        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+        href="{% url 'todo-app:home-page' %}"
+        >Tasks</a
+      >
+      <a
+        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+        href="{% url 'land-page' %}"
+        >Home</a
+      >
+
+      {% else %}
+      <a
+        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+        href="{% url 'signup' %}"
+        >Signup</a
+      >
+      <a
+        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+        href="{% url 'login' %}"
+        >Login</a
+      >
+
+      {% endif %}
+    </div>
+  </div>
+</nav>
+<div class="text-center mt-36">
+  <h2 class="text-[40px] font-extrabold text-teal-700">DJTodo</h2>
+  <p class="font-bold text-black-700"><em>managing your tasks...</em></p>
+</div>
+
+{% endblock %}

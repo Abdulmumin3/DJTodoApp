@@ -1,0 +1,30 @@
+{% extends "todo_app/base.html" %}
+<!--  -->
+{% block title %}Signup{% endblock %}
+<!--  -->
+{% block content %}
+<!-- <a href="{% url 'todo-app:home-page' %}"></a> -->
+
+<h2>Signup</h2>
+{% if message %}
+<p>{{message}}</p>
+{% endif %}
+<form method="POST" action="">
+  {% csrf_token %} 
+  <!-- {{form.as_p}} -->
+  {% for field in form %}
+  <p>
+    {{ field.label_tag }}<br>
+    {{ field }}
+    {% if field.help_text %}
+        <small style="color: gray">{{ field.help_text }}</small>
+    {% endif %}
+    {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}
+  </p>
+  {% endfor %}
+  <input type="submit" value="Signup" class="inline-flex mt-4 mb-4 text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg" />
+</form>
+<h3>Already have an account, <a class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" href="{% url 'login' %}">Login</a></h3>
+{% endblock %}

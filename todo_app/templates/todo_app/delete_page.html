@@ -1,0 +1,18 @@
+{% extends "todo_app/base.html" %}
+<!--  -->
+{% block title %}Delete Task{{task.id}}{% endblock %}
+<!--  -->
+{% block content %}
+<a class="text-xl font-bold" href="{% url 'todo-app:home-page' %}">&larr;Go back to Tasks</a>
+<h2 class="text-2xl mt-4 font-bold mb-4 text-black">Delete Task <strong>"{{task}}"</strong></h2>
+<form method="POST" action="">
+  {% csrf_token %}
+  <p>Are you sure you want to delete <strong>"{{task}}"</strong>?</p>
+  <a href="{{request.META.HTTP_REFERER}}">&larr; Go back</a>
+  <input
+    type="submit"
+    value="Confirm"
+    class="inline-flex mb-4 mt-4 text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg"
+  />
+</form>
+{% endblock %}

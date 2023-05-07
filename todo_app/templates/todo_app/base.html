@@ -1,0 +1,37 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% tailwind_css %}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comme:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{% block title %}Welcome{% endblock %} | DJTodo</title>
+  </head>
+  <body class="max-h-screen bg-[#ecded3]">
+    <div class="max-w-4xl mx-auto mt-4">
+      <div class="mb-4">
+        {% if user.is_authenticated %}
+        <p>
+          You're logged in as
+          <em class="text-xl font-bold">{{request.user}}</em>. Click here to
+          <a
+            class="inline-flex text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg"
+            href="{% url 'logout' %}"
+            >Logout</a
+          >
+        </p>
+
+        {% endif %}
+      </div>
+      {% block content %} {% endblock %}
+      <footer class="text-center font-bold text-black">
+        &copy;<a>abdulwale(anonymous)</a>
+      </footer>
+    </div>
+  </body>
+</html>

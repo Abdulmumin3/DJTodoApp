@@ -1,0 +1,30 @@
+{% extends "todo_app/base.html" %}
+<!--  -->
+{% block title %}Task{{task.id}}{% endblock %}
+<!--  -->
+{% block content %}
+<a href="{% url 'todo-app:home-page' %}">&larr; Go back to Tasks</a>
+<div class="flex mb-4 mt-4 justify-between items-center">
+  <h3 class="font-bold">Task: {{task}}</h3>
+  <h3>{{task.updated}}</h3>
+</div>
+<p class="mb-8"><strong>Description:</strong> {{task.description}}</p>
+<p><strong>Status:</strong></p>
+{% if task.is_completed %}
+<p>Completed</p>
+{% else %}
+<p>Uncompleted</p>
+{% endif %}
+<div class="mt-6">
+  <a
+    class="inline-flex text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg"
+    href="{% url 'todo-app:update-page' task.id %}"
+    >Update task</a
+  >
+  <a
+    class="inline-flex ml-4 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
+    href="{% url 'todo-app:delete-page' task.id %}"
+    >Delete task</a
+  >
+</div>
+{% endblock %}

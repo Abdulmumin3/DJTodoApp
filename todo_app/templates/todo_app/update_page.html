@@ -1,0 +1,27 @@
+{% extends "todo_app/base.html" %}
+<!--  -->
+{% block title %}Update Task{{task.id}}{% endblock %}
+<!--  -->
+{% block content %}
+<div class="mx-auto my-auto">
+<a class="font-bold" href="{% url 'todo-app:home-page' %}">&larr; Go back to Tasks</a>
+<h2 class="mt-4 mb-4 text-2xl font-bold">Update Task {{task}}</h2>
+<form method="POST" action="">
+  {% csrf_token %}
+<!--  {{form.as_p}}-->
+  {% for field in form %}
+  <p>
+    {{ field.label_tag }}<br>
+    {{ field }}
+    {% if field.help_text %}
+        <small style="color: gray">{{ field.help_text }}</small>
+    {% endif %}
+    {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}
+  </p>
+  {% endfor %}
+  <input type="submit" value="Update" class="mt-6 inline-flex text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg" />
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "todo_app/base.html" %} {% block title %}Tasks{% endblock %}
+<!--  -->
+{% block content %}
+<a href="{% url 'land-page' %}">&larr;Home</a>
+<nav>
+  <div class="flex justify-between items-center">
+    <form action="" method="get">
+      <input
+        type="text"
+        id="q"
+        name="q"
+        value="{{ request.GET.q }}"
+        placeholder="Search tasks..."
+        aria-label="Search"
+        class="rounded"
+      />
+      <button
+        class="mt-6 inline-flex text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg"
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+</nav>
+<h3 class="mt-4 mb-4 text-xl font-bold">
+  You have <em>{{count}}</em> incomplete tasks
+</h3>
+<div class="flex mb-4 mt-4 font-bold text-2xl justify-between items-center">
+  <h2>Tasks</h2>
+  <a class="items-end" href="{% url 'todo-app:create-page' %}"
+    >Create a new task</a
+  >
+</div>
+<ul class="space-y-4">
+  {% for task in tasks %}
+  <div
+    class="flex py-4 px-4 justify-between items-center shadow border border-solid"
+  >
+    <div>
+      <li>
+        <a class="text-xl" href="{% url 'todo-app:detail-page' task.pk %}"
+          >{{task}}</a
+        >
+      </li>
+    </div>
+    <div>
+      {% if task.is_completed %}
+      <p>Completed</p>
+      {% else %}
+      <p>Uncompleted</p>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</ul>
+{% endblock %}
