@@ -19,7 +19,6 @@ def homePage(request):
         tasks = Task.objects.filter(user=request.user)
     elif q is not None:
         tasks = Task.objects.filter(user=request.user, title__icontains=q)
-    
     count = Task.objects.filter(user=request.user, is_completed=False).count()
     return render(request, 'todo_app/homepage.html', {'tasks':tasks, 'count':count})
 
