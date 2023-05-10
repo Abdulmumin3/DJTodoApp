@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "todo_app",
     "tailwind",
     "theme",
+    'django_browser_reload',
     "whitenoise.runserver_nostatic",
 ]
 
