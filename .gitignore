@@ -11,6 +11,7 @@ media
 
 # If you are using PyCharm # 
 # User-specific stuff
+.idea
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
@@ -131,3 +132,5 @@ GitHub.sublime-settings
 !.vscode/extensions.json 
 .history/c:/Users/HP PROBOOK 11 G2/PycharmProjects/djangoProject/runtime.txt
 /c:/Users/HP PROBOOK 11 G2/PycharmProjects/djangoProject/Procfile
+/C:/Users/HP PROBOOK 11 G2/PycharmProjects/djangoProject/.idea
+/.idea
